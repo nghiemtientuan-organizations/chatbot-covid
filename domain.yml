@@ -1,0 +1,116 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- mood_great:
+    use_entities: true
+- mood_unhappy:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- ask_bot_ability:
+    use_entities: true
+- mood_lament:
+    use_entities: true
+- ask_bot_name:
+    use_entities: true
+- ask_time:
+    use_entities: true
+- ask_now_session:
+    use_entities: true
+- ask_suggest_food:
+    use_entities: true
+- ask_cook_food:
+    use_entities: true
+- ask_food_other:
+    use_entities: true
+- ask_now_weather:
+    use_entities: true
+- ask_bot_author_name:
+    use_entities: true
+- ask_suggest_drink:
+    use_entities: true
+- ask_find_food:
+    use_entities: true
+entities:
+- find_food
+slots:
+  suggest_food:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+responses:
+  utter_greet:
+  - text: Chào bạn
+  - text: Chào bạn, tôi có thể giúp gì cho bạn được nhỉ?
+  - text: Hãy nói điều bạn cần nào
+  - text: Rất vui được nói chuyện với bạn
+  utter_bot_challenge:
+  - text: Đúng tôi là bot bạn ạ. Bạn có thể thử hehe.
+  - text: Tôi là bot nhé.
+  - text: Thế bạn nghĩ có người đứng sau trả lời bạn thường xuyên à.
+  - text: Yes. Tôi có thể trả lời bạn mọi lúc mọi nơi.
+  utter_bot_ability:
+  - text: |-
+      Tôi có thể làm những công việc sau:
+      - 1. Trò chuyện với bạn.
+      - 2. Hỏi thời gian, mùa hiện tại, thời tiết hiện tại.
+      - 3. Gợi ý món.
+      - 4. Tìm cách nấu
+      (Bạn hãy gửi cho tôi những câu đơn giản như: hi, chào, xin chào, tạm biệt, biến, mấy h rồi, trời lạnh không, ăn gì được, nấu thế nào, ...)
+  utter_bot_name:
+  - text: Tôi tên là Bánh bao.
+  - text: Bánh bao là tên của tôi.
+  - text: Bạn có thể gọi tên là Bánh Bao.
+  - text: Bánh bao bạn nhé!
+  - text: Bánh bao nha.
+  utter_happy:
+  - text: Bạn vui thì tôi cũng vui rồi.
+  - text: Lan tỏa sự "Vui" đến với tôi đi.
+  - text: Bạn không thể vừa ghen tị và vừa hạnh phúc.
+  - text: Hạnh phúc… là cho, và sống vì người khác.
+  - text: Tôi sinh ra để bạn hạnh phúc hơn mà.
+  utter_unhappy:
+  - text: Trong cuộc sống có đôi lúc dường như mọi thứ không theo ý của bạn. Nhưng đừng vội bỏ cuộc, sự cố gắng sẽ đem bạn đến với thứ mà bạn muốn.
+  - text: Chê người khác xấu, có làm bạn đẹp hơn không? Chê người khác ngu, có làm bạn thông minh hơn không?
+  - text: Đời bắt mình diễn. Thì ngại gì không nhận 1 vai. Đúng thì nai mà sai thì cáo. Cuộc đời nó láo. Mình bát nháo để thêm vui.
+  - text: Nào nào. Mình làm lại nhé.
+  utter_goodbye:
+  - image: https://picsum.photos/200/300
+    text: Chào
+  - image: https://picsum.photos/200/300
+    text: Tạm biệt bạn, hy vọng tôi có thể giúp ích được cho bạn.
+  - image: https://picsum.photos/200/300
+    text: Hẹn bạn vào lần sau nhé.
+  - image: https://picsum.photos/200/300
+    text: Bye, lần tới tôi hứa sẽ thông minh hơn.
+actions:
+- utter_greet
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+- action_default_fallback
+- action_refresh_story
+- action_get_date
+- action_get_season
+- action_get_temperature
+- action_get_suggest_food
+- action_how_to_cook_food
+- action_get_suggest_drink
+- action_find_food
+forms: {}
+e2e_actions: []
