@@ -1,0 +1,40 @@
+version: '3.0'
+
+services:
+  # Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: chatbot_covid_management
+    restart: unless-stopped
+    tty: true
+    env_file:
+      - .env
+    ports:
+      - "${APP_MANAGEMENT_PORT:-5000}:80"
+    volumes:
+      - ./server:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./docker/nginx/log:/var/log/nginx/
+    networks:
+      - chatbot-covid-network
+
+  # PHP Service
+  php:
+    build:
+      context: ./docker/workspace
+      dockerfile: Dockerfile
+    container_name: chatbot_covid_php
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./server:/var/www
+    networks:
+      - chatbot-covid-network
+
+networks:
+  chatbot-covid-network:
+    driver: bridge

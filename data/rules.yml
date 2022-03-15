@@ -1,0 +1,70 @@
+version: "2.0"
+
+rules:
+- rule: mood_great
+  steps:
+    - intent: mood_great
+    - action: utter_happy
+
+- rule: mood_unhappy
+  steps:
+    - intent: mood_unhappy
+    - action: utter_unhappy
+
+- rule: ask bot name
+  steps:
+    - intent: ask_bot_name
+    - action: utter_bot_name
+
+- rule: ask bot challenge
+  steps:
+    - intent: bot_challenge
+    - action: utter_bot_challenge
+
+- rule: ask bot ability
+  steps:
+    - intent: ask_bot_ability
+    - action: utter_bot_ability
+
+- rule: ask time
+  steps:
+    - intent: ask_time
+    - action: action_get_date
+
+- rule: ask now session
+  steps:
+    - intent: ask_now_session
+    - action: action_get_season
+
+- rule: ask now temperature
+  steps:
+    - intent: ask_now_weather
+    - action: action_get_temperature
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+    - action: action_refresh_story
+
+- rule: greeting
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+- rule: suggest food
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+
+- rule: suggest drink
+  steps:
+    - intent: ask_suggest_drink
+    - action: action_get_suggest_drink
+
+- rule: ask_find_food
+  steps:
+    - intent: ask_find_food
+      entities:
+        - find_food
+    - action: action_find_food
