@@ -15,17 +15,17 @@ rules:
 - rule: mood_great
   steps:
     - intent: intent_mood_great
-    - action: utter_happy
+    - action: utter_mood_great
 
 - rule: mood_unhappy
   steps:
     - intent: intent_mood_unhappy
-    - action: utter_unhappy
+    - action: utter_mood_unhappy
 
 - rule: ask_bot_ability
   steps:
     - intent: intent_ask_bot_ability
-    - action: utter_bot_ability
+    - action: utter_ask_bot_ability
 
 - rule: health_declaration
   steps:

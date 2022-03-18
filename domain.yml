@@ -5,15 +5,20 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- intent_greet:
-- intent_goodbye:
-- intent_mood_great:
-- intent_mood_unhappy:
 - intent_ask_bot_ability:
+    use_entities: true
+- intent_goodbye:
+    use_entities: true
+- intent_greet:
+    use_entities: true
 - intent_health_declaration:
     use_entities: true
-entities:
-slots:
+- intent_mood_great:
+    use_entities: true
+- intent_mood_unhappy:
+    use_entities: true
+entities: []
+slots: {}
 responses:
   utter_greet:
   - text: Chào bạn
@@ -51,9 +56,8 @@ actions:
 - utter_goodbye
 - utter_mood_great
 - utter_mood_unhappy
-- utter_iamabot
 - action_default_fallback
 - action_refresh_story
-- action_get_date
+- action_health_declaration
 forms: {}
 e2e_actions: []

@@ -1,3 +1,4 @@
 pip==21.3
-rasa==2.6.0
+sanic-jwt==1.6.0
+rasa==2.6.3
 rasa-sdk==2.6.0

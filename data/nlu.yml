@@ -1,9 +1,5 @@
 version: "2.0"
-
-# input user send message
 nlu:
-
-# greeting
 - intent: intent_greet
   examples: |
     - hey
@@ -28,7 +24,7 @@ nlu:
     - lô
     - hê lô
     - bot
-
+    - Chao ban
 - intent: intent_goodbye
   examples: |
     - good afternoon
@@ -39,7 +35,6 @@ nlu:
     - have a nice day
     - see you around
     - bye bye
-    - see you later
     - tạm biệt bot
     - đủ rồi
     - không cần nữa
@@ -48,7 +43,6 @@ nlu:
     - phắn
     - ra chỗ khác chơi
     - không cần mày nữa
-
 - intent: intent_mood_great
   examples: |
     - perfect
@@ -73,7 +67,6 @@ nlu:
     - kinh kinh
     - giỏi ghê
     - được đó
-
 - intent: intent_mood_unhappy
   examples: |
     - my day was horrible
@@ -100,7 +93,6 @@ nlu:
     - tau buồn vì mài lắm
     - buồn qué
     - không thích
-
 - intent: intent_ask_bot_ability
   examples: |
     - bạn có thể làm những gì nhỉ?
@@ -111,10 +103,8 @@ nlu:
     - cho tao biết mài có thể làm gì?
     - cho tao biết m làm được gì?
     - m có thể làm gì?
-    - bot có thể làm gì?
     - mướn m để làm gì?
     - thuê m để làm gì?
-
 - intent: intent_health_declaration
   examples: |
     - Khai báo y tế
