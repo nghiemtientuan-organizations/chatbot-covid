@@ -1,25 +1,19 @@
 version: "2.0"
-
-# input user send message
 nlu:
-
-# greeting
-- intent: greet
+- intent: intent_greet
   examples: |
     - hey
-    - hey, bánh bao
-    - hey Banh bao
     - hey bot
     - hello
     - hi
     - hello there
     - good morning
     - good evening
-    - hey there
-    - let's go
+    - good afternoon
     - goodmorning
     - goodevening
-    - good afternoon
+    - hey there
+    - let's go
     - xin chào
     - chào bạn
     - chào bot
@@ -29,8 +23,9 @@ nlu:
     - bot đâu rồi
     - lô
     - hê lô
-
-- intent: goodbye
+    - bot
+    - Chao ban
+- intent: intent_goodbye
   examples: |
     - good afternoon
     - see you later
@@ -40,7 +35,6 @@ nlu:
     - have a nice day
     - see you around
     - bye bye
-    - see you later
     - tạm biệt bot
     - đủ rồi
     - không cần nữa
@@ -49,40 +43,7 @@ nlu:
     - phắn
     - ra chỗ khác chơi
     - không cần mày nữa
-
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
-    - đúng rồi
-    - được đó
-    - chuẩn
-    - đúng
-    - hoàn hảo
-
-- intent: deny
-  examples: |
-    - no
-    - no no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-    - không
-    - không đúng
-    - sai rồi
-    - sai rồi nhé
-    - sai bét
-    - sai hết chỗ nói
-
-# customer mood
-- intent: mood_great
+- intent: intent_mood_great
   examples: |
     - perfect
     - great
@@ -106,8 +67,7 @@ nlu:
     - kinh kinh
     - giỏi ghê
     - được đó
-
-- intent: mood_unhappy
+- intent: intent_mood_unhappy
   examples: |
     - my day was horrible
     - I am sad
@@ -133,31 +93,7 @@ nlu:
     - tau buồn vì mài lắm
     - buồn qué
     - không thích
-
-- intent: mood_lament
-  examples: |
-    - m thấy t béo không?
-    - lại phải ăn à
-    - có cách nào không ăn mà vẫn không đói không
-    - t chán ăn
-    - lăn được mất
-    - tôi không biết nấu gì cả
-    - tôi buồn quá
-    - tôi vui quá
-
-# feature: bot info
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
-    - bạn có phải bot không?
-    - tôi đang nói chuyện với bot phải không?
-    - bạn có phải là người không?
-    - có thật bạn là bot không?
-
-- intent: ask_bot_ability
+- intent: intent_ask_bot_ability
   examples: |
     - bạn có thể làm những gì nhỉ?
     - bạn có thể làm gì?
@@ -167,142 +103,38 @@ nlu:
     - cho tao biết mài có thể làm gì?
     - cho tao biết m làm được gì?
     - m có thể làm gì?
-    - bot có thể làm gì?
     - mướn m để làm gì?
     - thuê m để làm gì?
-
-- intent: ask_bot_name
+- intent: intent_health_declaration
   examples: |
-    - m tên là gì?
-    - bot tên là gì nhỉ?
-    - cho tao biết mày tên là gì?
-    - tên mày là gì?
-    - bot có tên là gì?
-    - chủ của m đặt tên của mày là gì?
-    - what's your name?
-    - your's name?
-    - em tên là gì
-    - tên gì
+    - Khai báo y tế
+    - Cho mình khai báo y tế với
+    - Cho tôi khai báo y tế
+    - Khai bao y te
 
-- intent: ask_bot_author_name
+- intent: intent_y_submit
   examples: |
-    - ai làm ra m?
-    - chủ của bot là ai nhỉ?
-    - chủ của m là ai?
-    - ai dựng lên mày?
-    - ai code ra mày?
-    - ai sinh ra mày?
-    - chủ của m chắc giỏi lắm?
-    - ai đã tạo ra m
-    - cho t biết ai đã tạo ra m
-    - cho t biết ai đã code ra m
-    - your boss?
-    - who is your boss?
-
-# bot ability
-- intent: ask_time
+    - y
+    - yes
+    - ok
+    - chốt
+    - được
+    - đúng rồi
+    - gửi đi
+- intent: intent_n_submit
   examples: |
-    - mấy giờ rồi?
-    - bot bây giờ là mấy giờ?
-    - cho tao biết h là mấy giờ?
-    - what time is this?
-    - what time?
-    - mấy giờ
-    - now
-    - giờ hiện tại
-
-- intent: ask_now_session
+    - n
+    - no
+    - không
+    - làm lại
+    - để tôi chỉnh sửa
+    - cho sửa chút nhé
+    - sửa lại
+- intent: intent_covid_treatment
   examples: |
-    - hiện giờ đang là mùa gì?
-    - bây giờ là mùa gì nhỉ?
-    - m biết giờ là mùa gì không?
-    - bot biết đang là mùa gì không?
-    - mùa gì mà nóng vậy
-    - mùa gì mà lạnh vậy
-    - mùa gì mà nóng lạnh thất thường
-    - what session
-
-- intent: ask_now_weather
-  examples: |
-    - thời tiết nay thế nào
-    - thời tiết hiện tại thế nào
-    - ngoài trời bao nhiêu độ
-    - trời có lạnh không
-    - cho tao biết nay bao nhiêu độ vậy
-    - thời tiết lạnh không?
-    - thời tiết nóng không?
-    - trời bao nhiêu độ
-    - hiện tại bao nhiêu độ
-
-- intent: ask_suggest_food
-  examples: |
-    - cho tao một món đi
-    - m biết món nào ngon không
-    - ăn gì được nhỉ
-    - ăn chi
-    - t có thể ăn gì?
-    - nên ăn gì được nhỉ?
-    - ăn gì
-    - tiểu nhị cho món
-    - suggest cho món nào
-    - thời tiết thế này ăn gì được nhỉ
-    - nên ăn gì
-    - ăn gì bây giờ
-    - gợi ý món
-
-    - cho món khác
-    - tiểu nhị cho món khác
-    - coi món khác
-    - món khác nào
-    - món khác
-    - không, cho món khác
-    - next
-    - món tiếp
-    - tiếp, tau chưa ưng
-
-- intent: ask_cook_food
-  examples: |
-    - nấu như nào
-    - mấu món này như nào
-    - công thức như nào
-    - xin bí quyết nấu
-    - t không biết nấu món này, m biết nấu không?
-    - tìm cách nấu
-    - món trên nấu thế nào
-    - cách nấu nón này thế nào
-
-- intent: ask_suggest_drink
-  examples: |
-    - uống gì được
-    - uống gì bây giờ
-    - uống chi
-    - ún chi
-    - ún gì được
-    - nên ún gì
-    - cho một đồ uống coi
-    - nên uống gì
-    - suggest cho t một dồ uống coi
-    - lên đồ uống đuê
-
-# find food
-- intent: ask_find_food
-  examples: |
-    - tìm cho t món [bún chả](find_food)
-    - món [bún cá](find_food) có không?
-    - cho t hỏi món [bún đậu mắm tôm](find_food) có không?
-    - m có biết món [phở cuốn](find_food) mua ở đâu không?
-    - mua [bánh mì](find_food) ở đâu
-    - cho t một địa chỉ [bún bò huế](find_food) ngon đi
-    - [sushi](find_food) chỗ nào bán?
-    - [cơm cuộn](find_food) bán ở đâu
-    - chỗ nào bán [mỳ xào](find_food)
-    - t muốn ăn [mỳ cá](find_food)
-    - ăn [lẩu](find_food) ở đâu
-    - [bún cá](find_food) ở chỗ nào
-    - trên shopeefood có [bún](find_food) không?
-    - đặt [bún cá chấm](find_food) ở đâu
-    - tìm [bún riêu](find_food) đi
-    - tìm [bún bò huế](find_food) cho t
-    - tìm [Cháo ngon](find_food)
-    - find [Cá rán](find_food)
-    - tìm [bún riêu cua](find_food)
+    - Điều trị Covid
+    - Hướng dẫn điều trị covid
+    - Cho mình biết cách điều trị covid
+    - Điều tri covid như thế nào
+    - Làm thế nào để điều trị bệnh nhân covid
+    - Chăm sóc sức khỏe cho bệnh nhân covid ntn?

@@ -5,88 +5,135 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- greet:
+- intent_ask_bot_ability:
     use_entities: true
-- goodbye:
+- intent_goodbye:
     use_entities: true
-- affirm:
+- intent_greet:
     use_entities: true
-- deny:
+- intent_health_declaration:
     use_entities: true
-- mood_great:
+- intent_mood_great:
     use_entities: true
-- mood_unhappy:
+- intent_mood_unhappy:
     use_entities: true
-- bot_challenge:
+- intent_y_submit:
     use_entities: true
-- ask_bot_ability:
+- intent_n_submit:
     use_entities: true
-- mood_lament:
+- intent_covid_treatment:
     use_entities: true
-- ask_bot_name:
-    use_entities: true
-- ask_time:
-    use_entities: true
-- ask_now_session:
-    use_entities: true
-- ask_suggest_food:
-    use_entities: true
-- ask_cook_food:
-    use_entities: true
-- ask_food_other:
-    use_entities: true
-- ask_now_weather:
-    use_entities: true
-- ask_bot_author_name:
-    use_entities: true
-- ask_suggest_drink:
-    use_entities: true
-- ask_find_food:
-    use_entities: true
-entities:
-- find_food
+entities: []
 slots:
-  suggest_food:
-    type: rasa.shared.core.slots.ListSlot
+  1_name:
+    type: rasa.shared.core.slots.TextSlot
     initial_value: null
-    auto_fill: true
-    influence_conversation: true
+    auto_fill: false
+    influence_conversation: false
+  2_phone_number:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  3_year_birthday:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  4_gender:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  5_address:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  6_contact_to_f0:
+    type: rasa.shared.core.slots.BooleanSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  7_expression:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  100_patient_name:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  101_patient_age:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  102_patient_phone_number:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  103_patient_address:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  104_patient_illness_time:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  105_patient_is_cough:
+    type: rasa.shared.core.slots.BooleanSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  106_patient_is_conscious:
+    type: rasa.shared.core.slots.BooleanSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  107_patient_what_fever:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  108_patient_loss_of_taste:
+    type: rasa.shared.core.slots.BooleanSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  109_patient_loss_of_smell:
+    type: rasa.shared.core.slots.BooleanSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  110_patient_what_spo2:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  111_patient_what_breathing:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  112_patient_other:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
 responses:
   utter_greet:
-  - text: Chào bạn
+  - buttons:
+    - payload: I feel great
+      title: great
+    text: Chào bạn
   - text: Chào bạn, tôi có thể giúp gì cho bạn được nhỉ?
   - text: Hãy nói điều bạn cần nào
   - text: Rất vui được nói chuyện với bạn
-  utter_bot_challenge:
-  - text: Đúng tôi là bot bạn ạ. Bạn có thể thử hehe.
-  - text: Tôi là bot nhé.
-  - text: Thế bạn nghĩ có người đứng sau trả lời bạn thường xuyên à.
-  - text: Yes. Tôi có thể trả lời bạn mọi lúc mọi nơi.
-  utter_bot_ability:
-  - text: |-
-      Tôi có thể làm những công việc sau:
-      - 1. Trò chuyện với bạn.
-      - 2. Hỏi thời gian, mùa hiện tại, thời tiết hiện tại.
-      - 3. Gợi ý món.
-      - 4. Tìm cách nấu
-      (Bạn hãy gửi cho tôi những câu đơn giản như: hi, chào, xin chào, tạm biệt, biến, mấy h rồi, trời lạnh không, ăn gì được, nấu thế nào, ...)
-  utter_bot_name:
-  - text: Tôi tên là Bánh bao.
-  - text: Bánh bao là tên của tôi.
-  - text: Bạn có thể gọi tên là Bánh Bao.
-  - text: Bánh bao bạn nhé!
-  - text: Bánh bao nha.
-  utter_happy:
-  - text: Bạn vui thì tôi cũng vui rồi.
-  - text: Lan tỏa sự "Vui" đến với tôi đi.
-  - text: Bạn không thể vừa ghen tị và vừa hạnh phúc.
-  - text: Hạnh phúc… là cho, và sống vì người khác.
-  - text: Tôi sinh ra để bạn hạnh phúc hơn mà.
-  utter_unhappy:
-  - text: Trong cuộc sống có đôi lúc dường như mọi thứ không theo ý của bạn. Nhưng đừng vội bỏ cuộc, sự cố gắng sẽ đem bạn đến với thứ mà bạn muốn.
-  - text: Chê người khác xấu, có làm bạn đẹp hơn không? Chê người khác ngu, có làm bạn thông minh hơn không?
-  - text: Đời bắt mình diễn. Thì ngại gì không nhận 1 vai. Đúng thì nai mà sai thì cáo. Cuộc đời nó láo. Mình bát nháo để thêm vui.
-  - text: Nào nào. Mình làm lại nhé.
   utter_goodbye:
   - image: https://picsum.photos/200/300
     text: Chào
@@ -96,21 +143,137 @@ responses:
     text: Hẹn bạn vào lần sau nhé.
   - image: https://picsum.photos/200/300
     text: Bye, lần tới tôi hứa sẽ thông minh hơn.
+  utter_mood_great:
+  - text: Bạn vui thì tôi cũng vui rồi.
+  - text: Lan tỏa sự "Vui" đến với tôi đi.
+  - text: Bạn không thể vừa ghen tị và vừa hạnh phúc.
+  - text: Hạnh phúc… là cho, và sống vì người khác.
+  - text: Tôi sinh ra để bạn hạnh phúc hơn mà.
+  utter_mood_unhappy:
+  - text: Trong cuộc sống có đôi lúc dường như mọi thứ không theo ý của bạn. Nhưng đừng vội bỏ cuộc, sự cố gắng sẽ đem bạn đến với thứ mà bạn muốn.
+  - text: Chê người khác xấu, có làm bạn đẹp hơn không? Chê người khác ngu, có làm bạn thông minh hơn không?
+  - text: Đời bắt mình diễn. Thì ngại gì không nhận 1 vai. Đúng thì nai mà sai thì cáo. Cuộc đời nó láo. Mình bát nháo để thêm vui.
+  - text: Nào nào. Mình làm lại nhé.
+  utter_ask_bot_ability:
+  - text: |-
+      Những chủ đề tôi có thể trò chuyện:
+      - 1. Khai báo y tế trực tuyến
+      - 2. Điều trị Covid
+  utter_confirm_submit_health_declaration_form:
+  - text: Submit?
+  utter_ask_health_declaration_form_1_name:
+  - text: Bạn tên là gì?
+  utter_ask_health_declaration_form_2_phone_number:
+  - text: Số điện thoại của bạn là gì?
+  utter_ask_health_declaration_form_3_year_birthday:
+  - text: Bạn sinh năm bao nhiêu?
+  utter_ask_health_declaration_form_4_gender:
+  - text: Bạn là Nam hay Nữ?
+  utter_ask_health_declaration_form_5_address:
+  - text: Cho tôi biết địa chỉ của bạn
+  utter_ask_health_declaration_form_6_contact_to_f0:
+  - text: Trong 14 ngày gần nhất, bạn có từng tiếp xúc với F0 không?
+  utter_ask_health_declaration_form_7_expression:
+  - text: Bạn có chiệu chứng gì không?
+  utter_ask_covid_treatment_form_100_patient_name:
+  - text: Bệnh nhân tên là gì?
+  utter_ask_covid_treatment_form_101_patient_age:
+  - text: Bệnh nhân hiện tại bao nhiêu tuổi?
+  utter_ask_covid_treatment_form_102_patient_phone_number:
+  - text: Số điện thoại liên hệ là gì?
+  utter_ask_covid_treatment_form_103_patient_address:
+  - text: Địa chỉ nơi bệnh nhân đang ở?
+  utter_ask_covid_treatment_form_104_patient_illness_time:
+  - text: Bệnh nhân bị bệnh tư khi phát hiện được bao ngày rồi?
+  utter_ask_covid_treatment_form_105_patient_is_cough:
+  - text: Bệnh nhân có ho không?
+  utter_ask_covid_treatment_form_106_patient_is_conscious:
+  - text: Bệnh nhân có tỉnh táo không?
+  utter_ask_covid_treatment_form_107_patient_what_fever:
+  - text: Bệnh nhân bao nhiêu độ C?
+  utter_ask_covid_treatment_form_108_patient_loss_of_taste:
+  - text: Bệnh nhân có mất vị không?
+  utter_ask_covid_treatment_form_109_patient_loss_of_smell:
+  - text: Bệnh nhân có mất mùi không?
+  utter_ask_covid_treatment_form_110_patient_what_spo2:
+  - text: Bệnh nhân có chỉ số spo2 bao nhiêu?
+  utter_ask_covid_treatment_form_111_patient_what_breathing:
+  - text: Bệnh nhân có nhịp thở bao nhiêu?
+  utter_ask_covid_treatment_form_112_patient_other:
+  - text: Bệnh nhân có những biểu hiện nào khác?
 actions:
 - utter_greet
-- utter_cheer_up
-- utter_did_that_help
-- utter_happy
 - utter_goodbye
-- utter_iamabot
-- action_default_fallback
+- utter_mood_great
+- utter_mood_unhappy
+- utter_confirm_submit_health_declaration_form
 - action_refresh_story
-- action_get_date
-- action_get_season
-- action_get_temperature
-- action_get_suggest_food
-- action_how_to_cook_food
-- action_get_suggest_drink
-- action_find_food
-forms: {}
+- action_default_fallback
+- action_submit_health_declaration
+- actions_submit_covid_treatment_form
+forms:
+  health_declaration_form:
+    required_slots:
+      1_name:
+      - entity: 1_name
+        type: from_text
+      2_phone_number:
+      - entity: 2_phone_number
+        type: from_text
+      3_year_birthday:
+      - entity: 3_year_birthday
+        type: from_text
+      4_gender:
+      - entity: 4_gender
+        type: from_text
+      5_address:
+      - entity: 5_address
+        type: from_text
+      6_contact_to_f0:
+      - entity: 6_contact_to_f0
+        type: from_text
+      7_expression:
+      - entity: 7_expression
+        type: from_text
+  covid_treatment_form:
+    required_slots:
+      100_patient_name:
+      - entity: 100_patient_name
+        type: from_text
+      101_patient_age:
+      - entity: 101_patient_age
+        type: from_text
+      102_patient_phone_number:
+      - entity: 102_patient_phone_number
+        type: from_text
+      103_patient_address:
+      - entity: 103_patient_address
+        type: from_text
+      104_patient_illness_time:
+      - entity: 104_patient_illness_time
+        type: from_text
+      105_patient_is_cough:
+      - entity: 105_patient_is_cough
+        type: from_text
+      106_patient_is_conscious:
+      - entity: 106_patient_is_conscious
+        type: from_text
+      107_patient_what_fever:
+      - entity: 107_patient_what_fever
+        type: from_text
+      108_patient_loss_of_taste:
+      - entity: 108_patient_loss_of_taste
+        type: from_text
+      109_patient_loss_of_smell:
+      - entity: 109_patient_loss_of_smell
+        type: from_text
+      110_patient_what_spo2:
+      - entity: 110_patient_what_spo2
+        type: from_text
+      111_patient_what_breathing:
+      - entity: 111_patient_what_breathing
+        type: from_text
+      112_patient_other:
+      - entity: 112_patient_other
+        type: from_text
 e2e_actions: []

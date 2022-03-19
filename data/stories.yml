@@ -1,235 +1,48 @@
 version: "2.0"
 stories:
-# Full stories
-- story: full stories
+- story: greeting
   steps:
-    - intent: greet
+    - intent: intent_greet
     - action: utter_greet
-    - intent: ask_bot_name
-    - action: utter_bot_name
-    - intent: bot_challenge
-    - action: utter_bot_challenge
-    - intent: ask_now_weather
-    - action: action_get_temperature
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-    - intent: ask_suggest_drink
-    - action: action_get_suggest_drink
-    - intent: mood_great
-    - action: utter_happy
-    - intent: goodbye
-    - action: utter_goodbye
-    - action: action_refresh_story
-- story: full stories 2
-  steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: ask_bot_name
-    - action: utter_bot_name
-    - intent: bot_challenge
-    - action: utter_bot_challenge
-    - intent: ask_now_weather
-    - action: action_get_temperature
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-    - intent: ask_suggest_drink
-    - action: action_get_suggest_drink
-    - intent: mood_great
-    - action: utter_happy
-    - intent: goodbye
-    - action: utter_goodbye
-    - action: action_refresh_story
-- story: name, food
-  steps:
-    - intent: ask_bot_name
-    - action: utter_bot_name
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-- story: name, food, loop
-  steps:
-    - intent: ask_bot_name
-    - action: utter_bot_name
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-- story: hi, food
-  steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-- story: hi, bot_challenge, food
-  steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: bot_challenge
-    - action: utter_bot_challenge
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-- story: hi, weather, food
-  steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: ask_now_weather
-    - action: action_get_temperature
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-    - intent: ask_suggest_drink
-    - action: action_get_suggest_drink
-- story: hi, name, bot_challenge, food
-  steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: ask_bot_name
-    - action: utter_bot_name
-    - intent: bot_challenge
-    - action: utter_bot_challenge
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-- story: bot_challenge, food
-  steps:
-    - intent: bot_challenge
-    - action: utter_bot_challenge
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-- story: bot_challenge, loop, food
-  steps:
-    - intent: bot_challenge
-    - action: utter_bot_challenge
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
 
-# suggest food and cook
-- story: ask food name and cook
+- story: health_declaration 1
   steps:
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-- story: ask food name 1,2, cook
+    - intent: intent_health_declaration
+    - action: health_declaration_form
+    - active_loop: health_declaration_form
+    - active_loop: null
+    - action: utter_confirm_submit_health_declaration_form
+    - intent: intent_y_submit
+    - action: action_submit_health_declaration
+
+- story: health_declaration 2
   steps:
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
+    - intent: intent_health_declaration
+    - action: health_declaration_form
+    - active_loop: health_declaration_form
+    - active_loop: null
+    - action: utter_confirm_submit_health_declaration_form
+    # second repeat
+    - intent: intent_n_submit
     - slot_was_set:
-        - suggest_food
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-- story: ask food name 1,2,3 cook
+      - 1_name: null
+      - 2_phone_number: null
+      - 3_year_birthday: null
+      - 4_gender: null
+      - 5_address: null
+      - 6_contact_to_f0: null
+      - 7_expression: null
+    - action: health_declaration_form
+    - active_loop: health_declaration_form
+    - active_loop: null
+    - action: utter_confirm_submit_health_declaration_form
+    - intent: intent_y_submit
+    - action: action_submit_health_declaration
+
+- story: covid_treatment
   steps:
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-- story: ask food name 1,2,3,4 cook
-  steps:
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-- story: ask food name, cook, food name, cook, food name, cook, food name, cook, food name, cook
-  steps:
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
-    - intent: ask_suggest_food
-    - action: action_get_suggest_food
-    - slot_was_set:
-        - suggest_food
-    - intent: ask_cook_food
-    - action: action_how_to_cook_food
+    - intent: intent_covid_treatment
+    - action: covid_treatment_form
+    - active_loop: covid_treatment_form
+    - active_loop: null
+    - action: actions_submit_covid_treatment_form
