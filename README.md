@@ -98,3 +98,10 @@ Access link: [](http://localhost:5002)
 ```
     docker-compose logs
 ```
+
+# 7. Test connect
+```
+sudo snap install ngrok
+ngrok authtoken <key />
+ngrok http 5005
+```
