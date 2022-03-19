@@ -26,8 +26,3 @@ rules:
   steps:
     - intent: intent_ask_bot_ability
     - action: utter_ask_bot_ability
-
-- rule: health_declaration
-  steps:
-    - intent: intent_health_declaration
-    - action: action_health_declaration

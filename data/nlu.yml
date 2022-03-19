@@ -108,3 +108,33 @@ nlu:
 - intent: intent_health_declaration
   examples: |
     - Khai báo y tế
+    - Cho mình khai báo y tế với
+    - Cho tôi khai báo y tế
+    - Khai bao y te
+
+- intent: intent_y_submit
+  examples: |
+    - y
+    - yes
+    - ok
+    - chốt
+    - được
+    - đúng rồi
+    - gửi đi
+- intent: intent_n_submit
+  examples: |
+    - n
+    - no
+    - không
+    - làm lại
+    - để tôi chỉnh sửa
+    - cho sửa chút nhé
+    - sửa lại
+- intent: intent_covid_treatment
+  examples: |
+    - Điều trị Covid
+    - Hướng dẫn điều trị covid
+    - Cho mình biết cách điều trị covid
+    - Điều tri covid như thế nào
+    - Làm thế nào để điều trị bệnh nhân covid
+    - Chăm sóc sức khỏe cho bệnh nhân covid ntn?

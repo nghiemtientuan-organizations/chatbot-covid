@@ -4,3 +4,45 @@ stories:
   steps:
     - intent: intent_greet
     - action: utter_greet
+
+- story: health_declaration 1
+  steps:
+    - intent: intent_health_declaration
+    - action: health_declaration_form
+    - active_loop: health_declaration_form
+    - active_loop: null
+    - action: utter_confirm_submit_health_declaration_form
+    - intent: intent_y_submit
+    - action: action_submit_health_declaration
+
+- story: health_declaration 2
+  steps:
+    - intent: intent_health_declaration
+    - action: health_declaration_form
+    - active_loop: health_declaration_form
+    - active_loop: null
+    - action: utter_confirm_submit_health_declaration_form
+    # second repeat
+    - intent: intent_n_submit
+    - slot_was_set:
+      - 1_name: null
+      - 2_phone_number: null
+      - 3_year_birthday: null
+      - 4_gender: null
+      - 5_address: null
+      - 6_contact_to_f0: null
+      - 7_expression: null
+    - action: health_declaration_form
+    - active_loop: health_declaration_form
+    - active_loop: null
+    - action: utter_confirm_submit_health_declaration_form
+    - intent: intent_y_submit
+    - action: action_submit_health_declaration
+
+- story: covid_treatment
+  steps:
+    - intent: intent_covid_treatment
+    - action: covid_treatment_form
+    - active_loop: covid_treatment_form
+    - active_loop: null
+    - action: actions_submit_covid_treatment_form

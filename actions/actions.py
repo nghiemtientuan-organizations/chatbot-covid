@@ -15,6 +15,13 @@ DB_PATH = './server/database/db/collection.sqlite'
 VN_TZ = pytz.timezone('Asia/Ho_Chi_Minh')
 now = datetime.now(VN_TZ)
 month = now.strftime('%m')
+COVID_LEVELS = {
+    'no_symptoms': 'Không triệu chứng',
+    'low': 'Nhẹ',
+    'medium': 'Trung bình',
+    'Severity': 'Nặng',
+    'critical': 'Nguy kịch',
+}
 
 
 # action get food
@@ -140,3 +147,50 @@ class ActionDefaultFallback(Action):
 
         # Revert user message which led to fallback.
         return [Restarted()]
+
+
+# action default fallback
+class ActionSubmitHealthDeclaration(Action):
+    def name(self) -> Text:
+        return 'action_submit_health_declaration'
+
+    async def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        dispatcher.utter_message(text='Khai báo y tế của bạn đã được ghi lại. Cùng nhau vượt qua đại dich.')
+
+        return []
+
+
+# action default fallback
+class ActionSubmitCovidTreatmentForm(Action):
+    def name(self) -> Text:
+        return 'actions_submit_covid_treatment_form'
+
+    async def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        name = tracker.get_slot('100_patient_name')
+        age = tracker.get_slot('101_patient_age')
+        phone_number = tracker.get_slot('102_patient_phone_number')
+        address = tracker.get_slot('103_patient_address')
+        illness_time = tracker.get_slot('104_patient_illness_time')
+        is_cough = tracker.get_slot('105_patient_is_cough')
+        is_conscious = tracker.get_slot('106_patient_is_conscious')
+        fever = tracker.get_slot('107_patient_what_fever')
+        is_loss_of_smell = tracker.get_slot('109_patient_loss_of_smell')
+        spo2 = tracker.get_slot('110_patient_what_spo2')
+        breathing = tracker.get_slot('111_patient_what_breathing')
+        other = tracker.get_slot('112_patient_other')
+
+        covid_level = COVID_LEVELS.get('no_symptoms')
+
+        dispatcher.utter_message(text='actions_submit_covid_treatment_form')
+
+        return []
