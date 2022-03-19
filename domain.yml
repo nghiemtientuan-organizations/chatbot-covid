@@ -159,7 +159,6 @@ responses:
       Những chủ đề tôi có thể trò chuyện:
       - 1. Khai báo y tế trực tuyến
       - 2. Điều trị Covid
-      - 3. Khai báo khỏi Covid
   utter_confirm_submit_health_declaration_form:
   - text: Submit?
   utter_ask_health_declaration_form_1_name:
