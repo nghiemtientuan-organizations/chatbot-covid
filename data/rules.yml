@@ -12,16 +12,6 @@ rules:
     - action: utter_goodbye
     - action: action_refresh_story
 
-- rule: mood_great
-  steps:
-    - intent: intent_mood_great
-    - action: utter_mood_great
-
-- rule: mood_unhappy
-  steps:
-    - intent: intent_mood_unhappy
-    - action: utter_mood_unhappy
-
 - rule: ask_bot_ability
   steps:
     - intent: intent_ask_bot_ability

@@ -200,7 +200,7 @@ responses:
   utter_ask_covid_treatment_form_111_patient_what_breathing:
   - text: Bệnh nhân có nhịp thở bao nhiêu?
   utter_ask_covid_treatment_form_112_patient_other:
-  - text: Bệnh nhân có những biểu hiện nào?
+  - text: Bệnh nhân có những biểu hiện nào khác?
 actions:
 - utter_greet
 - utter_goodbye

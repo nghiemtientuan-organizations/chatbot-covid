@@ -115,28 +115,42 @@ class ActionSubmitCovidTreatmentForm(Action):
         breathing = tracker.get_slot('111_patient_what_breathing')
         other = tracker.get_slot('112_patient_other').lower()
 
-        covid_level = None
+        covid_level = COVID_LEVELS.get('no_symptoms')
+        print(1)
+        print(is_cough in ' không ko khong no ')
+        print(is_conscious in ' không ko khong no ')
         # Check no_symptoms level
         if is_cough in ' không ko khong no ' and is_conscious in ' không ko khong no ':
+            print(2)
             if breathing not in 'không ko khong no ' and spo2 not in 'không ko khong no ' and (
                     breathing > 20 or spo2 < 96):
                 covid_level = COVID_LEVELS.get('no_symptoms')
+        print(2)
 
+        spo2 = int(spo2)
+        breathing = int(breathing)
         if not covid_level:
             if is_cough in ' yes co có ' \
                     or is_conscious in ' yes co có ' \
                     or is_loss_of_taste in ' yes co có ' \
                     or is_loss_of_smell in ' yes co có ':
+                print(3)
                 if 10 < breathing < 20 and spo2 > 96:
+                    print(4)
                     covid_level = COVID_LEVELS.get('low')
                 elif 20 < breathing < 25 and 94 < spo2 < 96:
+                    print(5)
                     covid_level = COVID_LEVELS.get('medium')
                 elif 25 < breathing < 30 or 80 < spo2 < 94:
+                    print(6)
                     covid_level = COVID_LEVELS.get('severity')
                 elif breathing > 30 or breathing < 10 or spo2 < 80:
+                    print(7)
                     covid_level = COVID_LEVELS.get('critical')
+        print(8)
 
         dispatcher.utter_message(text='Mức độ của bệnh nhân: {}'.format(covid_level))
+        print(9)
         if covid_level is COVID_LEVELS.get('no_symptoms') or covid_level is COVID_LEVELS.get('low'):
             dispatcher.utter_message(
                 text='Người bệnh không có triệu chứng lâm sàng. Nhịp thở < 20 lần/phút,                         \
